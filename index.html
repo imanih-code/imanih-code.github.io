@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#070709" />
+    <script>
+      // Aplica el tema guardado antes del primer paint para evitar el flash.
+      ;(() => {
+        try {
+          const stored = JSON.parse(localStorage.getItem('imanih-theme') || '"dark"')
+          const theme = stored === 'light' ? 'light' : 'dark'
+          document.documentElement.dataset.theme = theme
+          document
+            .querySelector('meta[name="theme-color"]')
+            ?.setAttribute('content', theme === 'dark' ? '#070709' : '#f7f5f2')
+        } catch {
+          document.documentElement.dataset.theme = 'dark'
+        }
+      })()
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>Imanih — Frontend Engineer (React)</title>
+    <meta
+      name="description"
+      content="Portfolio de Imanih, frontend engineer especializado en React, TypeScript y design systems. Interfaces rápidas, accesibles y con movimiento con propósito."
+    />
+    <meta name="author" content="Imanih" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Imanih — Frontend Engineer (React)" />
+    <meta
+      property="og:description"
+      content="Interfaces que piensan contigo. Portfolio de proyectos en React, TypeScript y motion."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
